@@ -1,5 +1,5 @@
-metadata
-=========
+android-metadata
+==================
 
 A utility library for Android designed to simpify reading meta-data
 values from AndroidManifest.xml.
