@@ -4,6 +4,6 @@
     <bool name="false_value">false</bool>
 
     <dimen name="sample_dimen">5sp</dimen>
-    
+
     <color name="black">#000000</color>
 </resources>
