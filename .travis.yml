@@ -4,7 +4,7 @@ sudo: false
 env:
   global:
       - ANDROID_BUILD_TOOLS_VERSION=22.0.1
-      - ADB_INSTALL_TIMEOUT=8 # minutes (2 minutes by default)
+      - ADB_INSTALL_TIMEOUT=10
 
   matrix:
     - ANDROID_TARGET=android-22  ANDROID_ABI=armeabi-v7a
@@ -37,4 +37,4 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew connectedAndroidTest -PdisablePreDex
+  - ./gradlew build connectedCheck -PdisablePreDex
