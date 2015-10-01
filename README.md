@@ -1,6 +1,8 @@
 android-metadata
 ==================
 
+[![Build Status](https://travis-ci.org/onehilltech/android-metadata.svg)](https://travis-ci.org/onehilltech/android-metadata)
+
 A utility library for Android designed to simpify reading meta-data
 values from AndroidManifest.xml.
 
