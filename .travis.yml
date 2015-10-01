@@ -3,7 +3,6 @@ language: android
 env:
   global:
       - ANDROID_BUILD_TOOLS_VERSION=21.1.1
-      - ANDROID_ABI=armeabi-v7a
       - ADB_INSTALL_TIMEOUT=8 # minutes (2 minutes by default)
 
   matrix:
