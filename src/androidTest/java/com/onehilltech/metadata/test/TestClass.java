@@ -15,12 +15,9 @@
  * limitations under the License.
  */
 
-package com.onehilltech.metadata;
+package com.onehilltech.metadata.test;
 
 public class TestClass
 {
-  public TestClass ()
-  {
-    
-  }    
+
 }

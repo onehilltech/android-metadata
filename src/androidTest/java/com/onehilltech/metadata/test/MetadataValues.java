@@ -14,16 +14,20 @@
  * limitations under the License.
  */
 
-package com.onehilltech.metadata;
+package com.onehilltech.metadata.test;
 
 import android.content.res.XmlResourceParser;
+
+import com.onehilltech.metadata.MetadataMethod;
+import com.onehilltech.metadata.MetadataProperty;
+import com.onehilltech.metadata.ResourceType;
 
 public class MetadataValues
 {
   //// Attribute Testers
   
   // android:value
-  @MetadataProperty(name="metadata.string")
+  @MetadataProperty (name="metadata.string")
   public String theString;
   
   @MetadataProperty(name="metadata.integer")
@@ -51,14 +55,14 @@ public class MetadataValues
   @MetadataProperty(name="metadata.resource.dimension", fromResource=true)
   public float theDimension;
   
-  @MetadataProperty(name="metadata.resource.color", fromResource=true, resourceType=ResourceType.Color)
+  @MetadataProperty(name="metadata.resource.color", fromResource=true, resourceType= ResourceType.Color)
   public int colorBlack;
   
   //// Method Testers
   
   private String metadataString_;
   
-  @MetadataMethod(name="metadata.string")
+  @MetadataMethod (name="metadata.string")
   public void setMetadataString (String str)
   {
     this.metadataString_ = str;

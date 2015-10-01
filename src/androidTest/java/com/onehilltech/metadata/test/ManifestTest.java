@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package com.onehilltech.metadata;
+package com.onehilltech.metadata.test;
 
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.test.AndroidTestCase;
+import android.support.test.InstrumentationRegistry;
+import android.support.test.runner.AndroidJUnit4;
 
-import com.onehilltech.metadata.test.R;
+import com.onehilltech.metadata.ManifestMetadata;
 
 import junit.framework.Assert;
 
-/**
- * @class ManifestTest
- */
-public class ManifestTest extends AndroidTestCase
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@RunWith (AndroidJUnit4.class)
+public class ManifestTest
 {
   public static final String METADATA_STRING = "metadata.string";
   public static final String METADATA_INTEGER = "metadata.integer";
@@ -42,14 +44,12 @@ public class ManifestTest extends AndroidTestCase
   public static final String METADATA_RESOURCE_DIMENSION = "metadata.resource.dimension";
   public static final String METADATA_RESOURCE_COLOR = "metadata.resource.color";
 
-  /**
-   * Test getMetadata ()
-   */
+  @Test
   public void testGetMetadata ()
   {
     try
     {
-      Bundle metadata = ManifestMetadata.get (this.getContext ()).getMetadata ();
+      Bundle metadata = ManifestMetadata.get (InstrumentationRegistry.getContext ()).getMetadata ();
       
       Assert.assertEquals (true, metadata.containsKey (METADATA_STRING));
       Assert.assertEquals (true, metadata.containsKey (METADATA_INTEGER));
@@ -71,14 +71,12 @@ public class ManifestTest extends AndroidTestCase
     }    
   }
   
-  /**
-   * Test getMetadataValue ()
-   */
+  @Test
   public void testGetMetadataValue ()
   {
     try
     {
-      ManifestMetadata metadata = ManifestMetadata.get (this.getContext ());
+      ManifestMetadata metadata = ManifestMetadata.get (InstrumentationRegistry.getContext ());
       String value = metadata.getValue (METADATA_STRING);
       Assert.assertEquals ("Hello, World!", value);
       
@@ -91,9 +89,7 @@ public class ManifestTest extends AndroidTestCase
     }    
   }
 
-  /**
-   * Test loadFromManifest ()
-   */
+  @Test
   public void testLoadFromManifest ()
   {
     try
@@ -101,8 +97,8 @@ public class ManifestTest extends AndroidTestCase
       // Test @Metadata
       
       MetadataValues values = new MetadataValues ();
-      ManifestMetadata.get (this.getContext ()).initFromMetadata (values);
-      Resources r = this.getContext ().getResources ();
+      ManifestMetadata.get (InstrumentationRegistry.getContext ()).initFromMetadata (values);
+      Resources r = InstrumentationRegistry.getContext ().getResources ();
 
       Assert.assertEquals ("Hello, World!", values.theString);
       Assert.assertEquals (42, values.theInteger);
@@ -125,17 +121,15 @@ public class ManifestTest extends AndroidTestCase
       Assert.fail (e.getMessage ());
     }    
   }
-  
-  /**
-   * Test loadFromManifest () with resourceType attributes. 
-   */
+
+  @Test
   public void testLoadFromManifestWithResourceType ()
   {
     try
     {
       MetadataValues values = new MetadataValues ();
-      ManifestMetadata.get (this.getContext ()).initFromMetadata (values);
-      Resources r = this.getContext ().getResources ();
+      ManifestMetadata.get (InstrumentationRegistry.getContext ()).initFromMetadata (values);
+      Resources r =InstrumentationRegistry.getContext ().getResources ();
       
       // Testing the resourceType method.
       Assert.assertEquals (r.getColor (R.color.black), values.colorBlack);
