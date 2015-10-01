@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-package com.onehilltech.metadata.test;
+package com.onehilltech.metadata;
 
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-
-import com.onehilltech.metadata.ManifestMetadata;
 
 import junit.framework.Assert;
 
@@ -70,7 +68,7 @@ public class ManifestTest
       Assert.fail (e.getMessage ());
     }    
   }
-  
+
   @Test
   public void testGetMetadataValue ()
   {
@@ -105,12 +103,12 @@ public class ManifestTest
       Assert.assertEquals (TestClass.class, values.theClass);
 
       Assert.assertEquals ("Hello, World!", values.theStringResource);
-      Assert.assertEquals (R.string.hello_world, values.theIntegerResource);
+      Assert.assertEquals (com.onehilltech.metadata.test.R.string.hello_world, values.theIntegerResource);
 
       Assert.assertTrue (values.theTrueValue);    
       Assert.assertFalse (values.theFalseValue);
       
-      Assert.assertEquals (r.getDimension (R.dimen.sample_dimen), values.theDimension);
+      Assert.assertEquals (r.getDimension (com.onehilltech.metadata.test.R.dimen.sample_dimen), values.theDimension);
       
       // Test @MetadataMethod
       Assert.assertEquals ("Hello, World!", values.getMetadataString ());
@@ -132,7 +130,7 @@ public class ManifestTest
       Resources r =InstrumentationRegistry.getContext ().getResources ();
       
       // Testing the resourceType method.
-      Assert.assertEquals (r.getColor (R.color.black), values.colorBlack);
+      Assert.assertEquals (r.getColor (com.onehilltech.metadata.test.R.color.black), values.colorBlack);
     }
     catch (Exception e)
     {

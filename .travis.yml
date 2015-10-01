@@ -38,3 +38,6 @@ before_script:
 
 script:
   - ./gradlew build connectedCheck -PdisablePreDex
+
+after_success:
+  - ./gradlew cobertura coveralls
