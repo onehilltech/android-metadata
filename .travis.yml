@@ -37,4 +37,4 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew build connectedCheck createDebugCoverageReport -PdisablePreDex
+  - ./gradlew clean build -PdisablePreDex
