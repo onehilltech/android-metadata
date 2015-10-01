@@ -25,8 +25,7 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
 
-    # Specify at least one system image,
-    # if you need to run emulator(s) during your tests
+    # Specify the system image to run emulator during tests
     - sys-img-$ANDROID_ABI-$ANDROID_TARGET
 
 before_script:
@@ -36,3 +35,8 @@ before_script:
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
+
+script:
+  - android list target
+  - ./gradlew connectedAndroidTest -PdisablePreDex
+  
