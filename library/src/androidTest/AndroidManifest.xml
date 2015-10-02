@@ -16,18 +16,10 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.onehilltech.metadata"
-          android:versionCode="4"
-          android:versionName="1.3" >
-
-    <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="21" />
+          package="com.onehilltech.metadata.test">
 
     <application
         android:allowBackup="false">
-
-        <uses-library android:name="android.test.runner" />
 
         <!-- android:value test values -->
         <meta-data
@@ -40,7 +32,7 @@
 
         <meta-data
             android:name="metadata.classname"
-            android:value="com.onehilltech.metadata.test.TestClass" />
+            android:value="com.onehilltech.metadata.TestClass" />
 
         <!-- android:resource test values -->
         <meta-data

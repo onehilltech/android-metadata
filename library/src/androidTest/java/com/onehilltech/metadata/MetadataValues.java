@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-package com.onehilltech.metadata.test;
+package com.onehilltech.metadata;
 
 import android.content.res.XmlResourceParser;
-
-import com.onehilltech.metadata.MetadataMethod;
-import com.onehilltech.metadata.MetadataProperty;
-import com.onehilltech.metadata.ResourceType;
 
 public class MetadataValues
 {
