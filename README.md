@@ -3,6 +3,7 @@ android-metadata
 
 [![GitHub version](https://badge.fury.io/gh/onehilltech%2Fandroid-metadata.svg)](http://badge.fury.io/gh/onehilltech%2Fandroid-metadata)
 [![Build Status](https://travis-ci.org/onehilltech/android-metadata.svg)](https://travis-ci.org/onehilltech/android-metadata)
+[![codecov.io](http://codecov.io/github/onehilltech/android-metadata/coverage.svg?branch=master)](http://codecov.io/github/onehilltech/android-metadata?branch=master)
 
 A utility library for Android designed to simpify reading meta-data
 values from AndroidManifest.xml.
