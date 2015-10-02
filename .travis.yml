@@ -31,6 +31,7 @@ android:
 before_script:
   # Create and start emulator
   - chmod +x gradlew
+  - pip install --user codecov
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
@@ -38,3 +39,6 @@ before_script:
 
 script:
   - ./gradlew build connectedCheck -PdisablePreDex
+
+after_success:
+  - codecov
