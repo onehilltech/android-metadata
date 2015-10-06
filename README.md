@@ -12,6 +12,22 @@ values from AndroidManifest.xml.
 * Read individual meta-data values into **type-specific** variables.
 * Read one or more meta-data values into **annotated** Java classes.
 
+## Installation
+
+#### Gradle
+
+```
+buildscript {
+  repositories {
+    jcenter()
+  }
+}
+
+dependencies {
+  compile com.onehilltech.android:android-metadata:1.3.1
+}
+```
+
 ## Getting Started
 
 Here is the quickest and easiest way to load the metadata from AndroidManifest.xml
