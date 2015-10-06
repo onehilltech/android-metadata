@@ -24,7 +24,7 @@ buildscript {
 }
 
 dependencies {
-  compile com.onehilltech.android:android-metadata:1.3.1
+  compile com.onehilltech.android:android-metadata:x.y.z
 }
 ```
 
