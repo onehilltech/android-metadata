@@ -1,7 +1,7 @@
 android-metadata
 ==================
 
-[![GitHub version](https://badge.fury.io/gh/onehilltech%2Fandroid-metadata.svg)](http://badge.fury.io/gh/onehilltech%2Fandroid-metadata)
+[ ![Download](https://api.bintray.com/packages/onehilltech/android/android-metadata/images/download.svg) ](https://bintray.com/onehilltech/android/android-metadata/_latestVersion)
 [![Build Status](https://travis-ci.org/onehilltech/android-metadata.svg)](https://travis-ci.org/onehilltech/android-metadata)
 [![codecov.io](http://codecov.io/github/onehilltech/android-metadata/coverage.svg?branch=master)](http://codecov.io/github/onehilltech/android-metadata?branch=master)
 
