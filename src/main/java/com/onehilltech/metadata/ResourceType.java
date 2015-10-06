@@ -17,9 +17,7 @@
 package com.onehilltech.metadata;
 
 /**
- * @enum ResourceType
- * 
- * Enumeration of the different Android resource types. These values 
+ * Enumeration of the different Android resource types. These values
  * are for providing a hint to the @Metadata annotation.
  */
 public enum ResourceType

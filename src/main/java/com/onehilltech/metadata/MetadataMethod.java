@@ -23,17 +23,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @interface Metadata
- * 
- * Metadata annotation for class attributes.
+ * Metadata annotation for setter methods of a class. The setter method
+ * can only have 1 parameter---the value read from metadata.
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface MetadataProperty
+@Target(ElementType.METHOD)
+public @interface MetadataMethod
 {
   /// Name of the metadata.
-  String name () default "";
+  String name ();
   
   /// The metadata value comes from a resource.
   boolean fromResource () default false;

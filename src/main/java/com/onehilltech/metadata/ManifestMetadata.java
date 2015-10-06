@@ -32,9 +32,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 
 /**
- * @class ManifestMetadata
- * 
- * Utility class for loading meta-data from AndroidManifest.xml. This 
+ * Utility class for loading meta-data from AndroidManifest.xml. This
  * class defines methods that convert meta-data values into type-specific
  * values. It also provides methods for initializing annotated classes
  * with values defined in the meta-data.
