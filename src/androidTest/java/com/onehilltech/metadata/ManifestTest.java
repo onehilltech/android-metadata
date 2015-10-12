@@ -138,4 +138,11 @@ public class ManifestTest
       Assert.fail (e.getMessage ());
     }        
   }
+
+  @Test(expected=NameNotFoundException.class)
+  public void testNameNotFoundException () throws Exception
+  {
+    ManifestMetadata metadata = ManifestMetadata.get (InstrumentationRegistry.getContext ());
+    metadata.getValue ("foo", String.class);
+  }
 }
