@@ -30,7 +30,7 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 4
+        versionCode 5
         versionName project.property ('pom.version')
 
         testApplicationId 'com.onehilltech.metadata.test'
