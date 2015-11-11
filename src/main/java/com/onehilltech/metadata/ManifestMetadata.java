@@ -86,7 +86,7 @@ public class ManifestMetadata
     ApplicationInfo ai = pm.getApplicationInfo (context.getPackageName (), PackageManager.GET_META_DATA);
    
     this.metadata_ = ai.metaData;
-    this.context_ = context.getApplicationContext ();
+    this.context_ = context;
   }
   
   public Bundle getMetadata ()
