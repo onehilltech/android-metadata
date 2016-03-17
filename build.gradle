@@ -29,7 +29,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 22
         versionCode 7
-        versionName "1.4.3"
+        versionName "1.4.0"
 
         testApplicationId 'com.onehilltech.metadata.test'
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
