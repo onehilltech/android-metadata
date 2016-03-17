@@ -4,8 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.0'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.3.1'
+        classpath 'com.android.tools.build:gradle:2.0.0-beta6'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
     }
 }
@@ -18,20 +17,19 @@ allprojects {
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 
-group   = project.property ('pom.group')
-version = project.property ('pom.version')
+group   = "com.onehilltech.metadata"
+version = "1.4.3"
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 6
-        versionName project.property ('pom.version')
+        versionCode 7
+        versionName "1.4.3"
 
         testApplicationId 'com.onehilltech.metadata.test'
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
@@ -61,91 +59,5 @@ dependencies {
     androidTestCompile 'junit:junit:4.11'
     androidTestCompile('com.android.support.test:testing-support-lib:0.1') {
         exclude group: 'junit'
-    }
-}
-
-install {
-    repositories.mavenInstaller {
-        pom {
-            project {
-                packaging 'aar'
-
-                // Add your description here
-                name project.property ('name')
-                url  project.property ('url.website')
-
-                // Set your license
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'hilljh82'
-                        name 'James H. Hill'
-                        email 'james@onehilltech.com'
-                    }
-                }
-                scm {
-                    connection project.property ('url.scm')
-                    developerConnection project.property ('url.scm')
-                    url project.property ('url.website')
-                }
-            }
-        }
-    }
-}
-
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-    //options.encoding = 'UTF-8'
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-bintray {
-    user = project.property ('bintray.user')
-    key  = project.property ('bintray.apikey')
-
-    configurations = ['archives']
-
-    pkg {
-        repo    = 'android'
-        userOrg = 'onehilltech'
-        name    = 'android-metadata'
-        desc    = project.property ('desc')
-
-        publish = true
-        dryRun  = false
-
-        websiteUrl      = project.property ('url.website')
-        vcsUrl          = project.property ('url.scm')
-        issueTrackerUrl = project.property ('url.issues')
-
-        licenses = ['Apache-2.0']
-        labels   = ['android', 'metadata', 'AndroidManifest.xml']
-
-        publicDownloadNumbers = true
-
-        version {
-            name   = project.property ('pom.version')
-            desc   = project.property ('desc')
-            vcsTag = project.property ('pom.version')
-        }
     }
 }

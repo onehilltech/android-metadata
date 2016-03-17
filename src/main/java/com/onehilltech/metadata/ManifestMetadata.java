@@ -16,7 +16,10 @@
 
 package com.onehilltech.metadata;
 
+import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -45,15 +48,17 @@ import java.util.HashMap;
 public class ManifestMetadata 
 { 
   /// The metadata bundle
-  private Bundle metadata_;
+  private final Bundle metadata_;
   
   /// The application context for the program.
-  private Context context_;
+  private final Context context_;
   
   /// Singleton reference.
-  private static WeakReference <ManifestMetadata> instance_;
-  
-  private static final String TAG = ManifestMetadata.class.getName ();
+  private static WeakReference <ManifestMetadata> app_;
+
+  private static final HashMap <ComponentName, WeakReference <ManifestMetadata>> activities_ = new HashMap<> ();
+
+  private static final String TAG = "ManifestMetadata";
   
   /**
    * Get the singleton instance of the manifest. W
@@ -64,13 +69,59 @@ public class ManifestMetadata
   public static ManifestMetadata get (Context context)
       throws NameNotFoundException
   {
-    if (instance_ != null && instance_.get () != null)
-      return instance_.get ();
+    if (app_ != null && app_.get () != null)
+      return app_.get ();
+
+    // Load the metadata for the application.
+    PackageManager pm = context.getPackageManager ();
+    ApplicationInfo ai = pm.getApplicationInfo (context.getPackageName (), PackageManager.GET_META_DATA);
+    ManifestMetadata mm = new ManifestMetadata (context, ai.metaData);
+
+    app_ = new WeakReference <> (mm);
     
-    ManifestMetadata mm = new ManifestMetadata (context);
-    instance_ = new WeakReference <ManifestMetadata> (mm);
-    
-    return instance_.get ();
+    return app_.get ();
+  }
+
+  /**
+   * Get the metadata for the activity.
+   *
+   * @param activity
+   * @return
+   */
+  @SuppressWarnings ("unused")
+  public static ManifestMetadata get (Activity activity)
+    throws PackageManager.NameNotFoundException
+  {
+    return get (activity, activity.getComponentName ());
+  }
+
+  /**
+   * Get the metadata for a component.
+   *
+   * @param componentName
+   * @return
+   */
+  public static ManifestMetadata get (Context context, ComponentName componentName)
+    throws PackageManager.NameNotFoundException
+  {
+    // Check if we already have a reference to the metadata for this activity. If
+    // so, then just return our reference to the client. We can do this since the
+    // metadata will not change over the lifetime of the application.
+    WeakReference <ManifestMetadata> metadata = activities_.get (componentName);
+
+    if (metadata != null && metadata.get () != null)
+      return metadata.get ();
+
+    // Load the metadata for the application.
+    PackageManager pm = context.getPackageManager ();
+    ActivityInfo ai = pm.getActivityInfo (componentName, PackageManager.GET_META_DATA);
+    ManifestMetadata mm = new ManifestMetadata (context, ai.metaData);
+
+    // Cache the metadata for future reference.
+    metadata = new WeakReference<> (mm);
+    activities_.put (componentName, metadata);
+
+    return mm;
   }
   
   /**
@@ -79,16 +130,17 @@ public class ManifestMetadata
    * @param context
    * @throws NameNotFoundException
    */
-  private ManifestMetadata (Context context) 
-      throws NameNotFoundException
+  private ManifestMetadata (Context context, Bundle bundle)
   {
-    PackageManager pm = context.getPackageManager ();    
-    ApplicationInfo ai = pm.getApplicationInfo (context.getPackageName (), PackageManager.GET_META_DATA);
-   
-    this.metadata_ = ai.metaData;
     this.context_ = context;
+    this.metadata_ = bundle;
   }
-  
+
+  /**
+   * Get the metadata bundle.
+   *
+   * @return
+   */
   public Bundle getMetadata ()
   {
     return this.metadata_;
