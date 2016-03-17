@@ -18,8 +18,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.onehilltech.metadata.test">
 
-    <application
-        android:allowBackup="false">
+    <application android:allowBackup="false">
+
+        <activity android:name=".TestActivity">
+            <meta-data android:name="metadata.activity.string"
+                       android:value="Hello, World" />
+
+        </activity>
 
         <!-- android:value test values -->
         <meta-data
