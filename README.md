@@ -9,11 +9,11 @@ android-metadata
 A utility library for Android designed to simplify reading meta-data
 values from AndroidManifest.xml.
 
-* **Quickly** access a meta-data values from anywhere with few lines of code.
-* Read individual meta-data values into **type-specific** variables.
-* **Instantiate** objects from meta-data values.
-* Read one or more meta-data values into **annotated** Java classes.
-* Use meta-data values to pass configuration values to **libraries**.
+* *Quickly* access a meta-data values from anywhere with few lines of code.
+* Read individual meta-data values into *type-specific* variables.
+* *Instantiate* objects from meta-data values.
+* Read one or more meta-data values into *annotated* Java classes.
+* Use meta-data values to pass configuration parameters to *third-party libraries*.
 
 ## Installation
 
