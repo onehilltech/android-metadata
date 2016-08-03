@@ -1,7 +1,8 @@
 android-metadata
 ==================
 
-[ ![Download](https://api.bintray.com/packages/onehilltech/android/android-metadata/images/download.svg) ](https://bintray.com/onehilltech/android/android-metadata/_latestVersion)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--metadata-green.svg?style=true)](https://android-arsenal.com/details/1/4045)
+[![Download](https://api.bintray.com/packages/onehilltech/android/android-metadata/images/download.svg) ](https://bintray.com/onehilltech/android/android-metadata/_latestVersion)
 [![Build Status](https://travis-ci.org/onehilltech/android-metadata.svg)](https://travis-ci.org/onehilltech/android-metadata)
 [![codecov.io](http://codecov.io/github/onehilltech/android-metadata/coverage.svg?branch=master)](http://codecov.io/github/onehilltech/android-metadata?branch=master)
 
