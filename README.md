@@ -1,16 +1,19 @@
 android-metadata
 ==================
 
-[ ![Download](https://api.bintray.com/packages/onehilltech/android/android-metadata/images/download.svg) ](https://bintray.com/onehilltech/android/android-metadata/_latestVersion)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--metadata-green.svg?style=true)](https://android-arsenal.com/details/1/4045)
+[![Download](https://api.bintray.com/packages/onehilltech/android/android-metadata/images/download.svg) ](https://bintray.com/onehilltech/android/android-metadata/_latestVersion)
 [![Build Status](https://travis-ci.org/onehilltech/android-metadata.svg)](https://travis-ci.org/onehilltech/android-metadata)
 [![codecov.io](http://codecov.io/github/onehilltech/android-metadata/coverage.svg?branch=master)](http://codecov.io/github/onehilltech/android-metadata?branch=master)
 
-A utility library for Android designed to simpify reading meta-data
+A utility library for Android designed to simplify reading meta-data
 values from AndroidManifest.xml.
 
 * **Quickly** access a meta-data values from anywhere with few lines of code.
 * Read individual meta-data values into **type-specific** variables.
+* **Instantiate** objects from meta-data values.
 * Read one or more meta-data values into **annotated** Java classes.
+* Use meta-data values to pass configuration parameters to **third-party libraries**.
 
 ## Installation
 
