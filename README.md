@@ -19,12 +19,12 @@ values from AndroidManifest.xml.
 ```
 buildscript {
   repositories {
-    jcenter()
+    maven { url "https://jitpack.io" }
   }
 }
 
 dependencies {
-  compile com.onehilltech.android:android-metadata:x.y.z
+  compile com.github.onehilltech:android-metadata:x.y.z
 }
 ```
 
