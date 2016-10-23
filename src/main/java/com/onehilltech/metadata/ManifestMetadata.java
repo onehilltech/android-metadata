@@ -145,7 +145,12 @@ public class ManifestMetadata
   {
     return this.metadata_;
   }
-  
+
+  public boolean exists ()
+  {
+    return this.metadata_ != null;
+  }
+
   /**
    * Get the value of a meta-data element in AndroidManifest.xml. The
    * value is returned as a String value type.
@@ -209,6 +214,9 @@ public class ManifestMetadata
 	    throws NameNotFoundException, IllegalArgumentException, 
 	    IllegalAccessException, ClassNotFoundException, InvocationTargetException
 	{
+    if (this.metadata_ == null)
+      return;
+
 	  // Get the class, and locate fields with @Metadata.
 	  Field [] fields = target.getClass ().getFields ();
 	  
