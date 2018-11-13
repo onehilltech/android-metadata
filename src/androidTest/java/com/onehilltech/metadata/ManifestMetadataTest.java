@@ -21,8 +21,6 @@ import android.content.Context;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
 
 import com.onehilltech.metadata.test.TestActivity;
 
@@ -30,6 +28,9 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 @RunWith (AndroidJUnit4.class)
 public class ManifestMetadataTest
@@ -51,7 +52,7 @@ public class ManifestMetadataTest
   {
     try
     {
-      Bundle metadata = ManifestMetadata.get (InstrumentationRegistry.getContext ()).getMetadata ();
+      Bundle metadata = ManifestMetadata.get (InstrumentationRegistry.getInstrumentation ().getContext ()).getMetadata ();
       
       Assert.assertEquals (true, metadata.containsKey (METADATA_STRING));
       Assert.assertEquals (true, metadata.containsKey (METADATA_INTEGER));
@@ -78,7 +79,7 @@ public class ManifestMetadataTest
   {
     try
     {
-      ManifestMetadata metadata = ManifestMetadata.get (InstrumentationRegistry.getContext ());
+      ManifestMetadata metadata = ManifestMetadata.get (InstrumentationRegistry.getInstrumentation ().getContext ());
       String value = metadata.getValue (METADATA_STRING);
       Assert.assertEquals ("Hello, World!", value);
       
@@ -99,8 +100,8 @@ public class ManifestMetadataTest
       // Test @Metadata
       
       MetadataValues values = new MetadataValues ();
-      ManifestMetadata.get (InstrumentationRegistry.getContext ()).initFromMetadata (values);
-      Resources r = InstrumentationRegistry.getContext ().getResources ();
+      ManifestMetadata.get (InstrumentationRegistry.getInstrumentation ().getContext ()).initFromMetadata (values);
+      Resources r = InstrumentationRegistry.getInstrumentation ().getContext ().getResources ();
 
       Assert.assertEquals ("Hello, World!", values.theString);
       Assert.assertEquals (42, values.theInteger);
@@ -130,8 +131,8 @@ public class ManifestMetadataTest
     try
     {
       MetadataValues values = new MetadataValues ();
-      ManifestMetadata.get (InstrumentationRegistry.getContext ()).initFromMetadata (values);
-      Resources r =InstrumentationRegistry.getContext ().getResources ();
+      ManifestMetadata.get (InstrumentationRegistry.getInstrumentation ().getContext ()).initFromMetadata (values);
+      Resources r =InstrumentationRegistry.getInstrumentation ().getContext ().getResources ();
       
       // Testing the resourceType method.
       Assert.assertEquals (r.getColor (com.onehilltech.metadata.test.R.color.black), values.colorBlack);
@@ -146,14 +147,14 @@ public class ManifestMetadataTest
   @Test(expected=NameNotFoundException.class)
   public void testNameNotFoundException () throws Exception
   {
-    ManifestMetadata metadata = ManifestMetadata.get (InstrumentationRegistry.getContext ());
+    ManifestMetadata metadata = ManifestMetadata.get (InstrumentationRegistry.getInstrumentation ().getContext ());
     metadata.getValue ("foo", String.class);
   }
 
   @Test
   public void testActivityMetadata () throws Exception
   {
-    Context context = InstrumentationRegistry.getContext ();
+    Context context = InstrumentationRegistry.getInstrumentation ().getContext ();
     ComponentName componentName = new ComponentName (context, TestActivity.class);
     ManifestMetadata metadata = ManifestMetadata.get (context, componentName);
 
