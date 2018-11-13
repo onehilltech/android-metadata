@@ -19,7 +19,7 @@ allprojects {
 apply plugin: 'com.android.library'
 
 group   = "com.onehilltech.android"
-version = "1.4.3"
+version = "1.5.0"
 
 android {
     compileSdkVersion 28
