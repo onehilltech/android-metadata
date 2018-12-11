@@ -27,7 +27,7 @@ buildscript {
 }
 
 dependencies {
-  compile com.github.onehilltech:android-metadata:x.y.z
+  compile 'com.github.onehilltech:android-metadata:x.y.z'
 }
 ```
 
